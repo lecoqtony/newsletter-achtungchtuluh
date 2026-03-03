@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achtung! Cthulhu – Sortie VF</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: #000;
+    font-family: Arial, sans-serif;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url("background.gif") center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 4vw;
+    letter-spacing: 4px;
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 0 20px rgba(0,0,0,0.8);
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* BOUTON HERO */
+.cta {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cta a {
+    background: #a00000;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cta a:hover {
+    background: #ff0000;
+}
+
+/* SECTIONS */
+.section {
+    width: 100%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section img {
+    width: 100%;
+    display: block;
+    transition: 0.3s;
+}
+
+.section a:hover img {
+    opacity: 0.9;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>ACHTUNG! CTHULHU<br>VERSION FRANÇAISE</h1>
+
+    <div class="cta">
+        <a href="#suite">Découvrir l’opération</a>
+    </div>
+</div>
+
+<div id="suite"></div>
+
+<!-- PAGES CLIQUABLES -->
+<div class="section">
+    <a href="https://pro.legion-distribution.com/240-achtung-cthulhu" target="_blank">
+        <img src="page1.png" alt="">
+    </a>
+</div>
+
+<div class="section">
+    <a href="https://pro.legion-distribution.com/240-achtung-cthulhu" target="_blank">
+        <img src="page2.png" alt="">
+    </a>
+</div>
+
+<div class="section">
+    <a href="https://pro.legion-distribution.com/240-achtung-cthulhu" target="_blank">
+        <img src="page3.png" alt="">
+    </a>
+</div>
+
+<div class="section">
+    <a href="https://pro.legion-distribution.com/240-achtung-cthulhu" target="_blank">
+        <img src="page4.png" alt="">
+    </a>
+</div>
+
+<div class="section">
+    <a href="https://pro.legion-distribution.com/240-achtung-cthulhu" target="_blank">
+        <img src="page5.png" alt="">
+    </a>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+</script>
+
+</body>
+</html>
